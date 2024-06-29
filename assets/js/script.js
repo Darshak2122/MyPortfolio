@@ -113,73 +113,50 @@ for (let i = 0; i < filterBtn.length; i++) {
 
 }
 
-
-
-// // contact form variables
-// const form = document.querySelector("[data-form]");
-// const formInputs = document.querySelectorAll("[data-form-input]");
-// const formBtn = document.querySelector("[data-form-btn]");
-
-// // add event to all form input field
-// for (let i = 0; i < formInputs.length; i++) {
-//   formInputs[i].addEventListener("input", function () {
-
-//     // check form validation  
-//     if (form.checkValidity()) {
-//       formBtn.removeAttribute("disabled");
-//     } else {
-//       formBtn.setAttribute("disabled", "");
-//     }
-
-//   });
-// }
-
-(function() {
-  emailjs.init('dodiyadp1999@gmail.com'); 
-})();
-
-// contact form variables
+// message  functionality 
 const form = document.querySelector("[data-form]");
 const formInputs = document.querySelectorAll("[data-form-input]");
 const formBtn = document.querySelector("[data-form-btn]");
 
-// add event to all form input field
-for (let i = 0; i < formInputs.length; i++) {
-  formInputs[i].addEventListener("input", function () {
-    // check form validation  
+// Add event to all form input fields
+formInputs.forEach(input => {
+  input.addEventListener("input", function () {
+    // Check form validation
     if (form.checkValidity()) {
       formBtn.removeAttribute("disabled");
     } else {
       formBtn.setAttribute("disabled", "");
     }
   });
-}
-
-form.addEventListener("submit", function(event) {
-  event.preventDefault();
-
-  const fullname = form.querySelector('input[name="fullname"]').value;
-  const email = form.querySelector('input[name="email"]').value;
-  const message = form.querySelector('textarea[name="message"]').value;
-
-  const templateParams = {
-    fullname: fullname,
-    email: email,
-    message: message,
-  };
-
-  emailjs.send('service_61dotvt', 'template_dggkinm', templateParams)
-    .then(function(response) {
-      console.log('SUCCESS!', response.status, response.text);
-      alert('Message sent successfully!');
-      form.reset();
-      formBtn.setAttribute("disabled", "");
-    }, function(error) {
-      console.log('FAILED...', error);
-      alert('Failed to send message. Please try again later.');
-    });
 });
 
+// Handle form submission
+// (function(){
+//   emailjs.init("dodiyadp1999@gmail.com");
+// })();
+// document.querySelector('.form').addEventListener('submit', function(event) {
+//   event.preventDefault();
+
+//   const fullname = event.target.querySelector('input[name="fullname"]').value;
+//   const email = event.target.querySelector('input[name="email"]').value;
+//   const message = event.target.querySelector('textarea[name="message"]').value;
+
+//   emailjs.send("service_61dotvt", "template_dggkinm", {
+//     from_name: fullname,
+//     from_email: email,
+//     message: message
+//   })
+//   .then(function(response) {
+//     console.log('SUCCESS!', response.status, response.text);
+//     alert("Message sent successfully");
+//     event.target.querySelector('input[name="fullname"]').value = "";
+//     event.target.querySelector('input[name="email"]').value = "";
+//     event.target.querySelector('textarea[name="message"]').value = "";
+//   }, function(error) {
+//     console.log('FAILED...', error);
+//     alert("Message sending failed");
+//   });
+// });
 
 // page navigation variables
 const navigationLinks = document.querySelectorAll("[data-nav-link]");

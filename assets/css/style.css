@@ -750,16 +750,14 @@ main {
 
 .clients-item img {
   width: 100%;
-  /* filter: grayscale(1); */
-  /* transition: var(--transition-1); */
+  filter: grayscale(1); 
+ transition: var(--transition-1);
   height: 150px;
-
-  
-  /* remove background */
-  /* mix-blend-mode: multiply; */
 }
 
-/* .clients-item img:hover { filter: grayscale(0); } */
+/* .clients-item img:hover { 
+  filter: grayscale(0);
+ } */
 
 
 
